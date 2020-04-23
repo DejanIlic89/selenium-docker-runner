@@ -13,7 +13,7 @@ pipeline{
     }
     stage("Run Test"){
       steps{
-        bat "docker-compose up search-module book-flight-module"
+        bat "docker-compose up search-module"
       }
     }
   }
@@ -22,7 +22,7 @@ pipeline{
       archiveArtifacts artifacts: 'output/**'
       bat "docker-compose down"
       script { 
-        allure([ includeProperties: false, jdk: '', properties: [[key: 'allure.results.directory', value: 'target/allure-results']], reportBuildPolicy: 'ALWAYS', report: 'target/allure-reports', results: [[path: 'target/allure-results']] ]) 
+        allure([ includeProperties: false, jdk: '', properties: [[key: 'allure.results.directory', value: '**/target/allure-results']], reportBuildPolicy: 'ALWAYS', report: '**/target/allure-reports', results: [[path: '**/target/allure-results']] ]) 
       }
     }
   }
