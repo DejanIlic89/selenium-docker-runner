@@ -22,7 +22,7 @@ pipeline{
       archiveArtifacts artifacts: 'output/**'
       bat "docker-compose down"
       script { 
-        allure([ includeProperties: false, jdk: '', properties: [], reportBuildPolicy: 'ALWAYS', results: [[path: 'allure-results']] ]) }
+        allure([ includeProperties: false, jdk: '', properties: [], reportBuildPolicy: 'ALWAYS', results: [[path: 'allure-results']] ]) 
       }
     }
   }
